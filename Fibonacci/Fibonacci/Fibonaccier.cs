@@ -4,6 +4,8 @@ namespace Fibonacci
 {
     internal class Fibonaccier
     {
+        static IFibonacciService fibonacciService { get; set; } = new FibonacciService();
+
         /// <summary>
         /// Entry point
         /// </summary>
@@ -16,7 +18,20 @@ namespace Fibonacci
             {
                 writeToConsole("Please give me a positive number:");
 
-                callLogic(readFromConsole());
+                string inputStr = readFromConsole();
+
+                int number;
+
+                bool isParsable = Int32.TryParse(inputStr, out number);
+
+                if (isParsable)
+                {
+                    callLogic(number);
+                }
+                else
+                {
+                    writeToConsole("Your input is not correct.");
+                }
 
                 writeToConsole("Do you wouldl like to Continue? [Y]/[N]");
 
@@ -25,9 +40,12 @@ namespace Fibonacci
             writeToConsole($"{nameof(Fibonaccier)} application is Ended");
         }
 
-        static void callLogic(string input)
+        static void callLogic(int input)
         {
-            writeToConsole(input);
+            var result = fibonacciService.CompareRandomDelayToFibonacciCalculation(input, 1000);
+
+            writeToConsole($"Fibbonacci of {input} is {result.Fibonacci}");
+            writeToConsole($"{result.FirstDone} task was first done.");
         }
 
         static void writeToConsole(string message)
