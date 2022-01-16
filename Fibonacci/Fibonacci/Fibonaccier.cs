@@ -20,13 +20,11 @@ namespace Fibonacci
 
                 string inputStr = readFromConsole();
 
-                int number;
+                int inputNumber;
 
-                bool isParsable = Int32.TryParse(inputStr, out number);
-
-                if (isParsable)
+                if (Int32.TryParse(inputStr, out inputNumber))
                 {
-                    callLogic(number);
+                    callLogic(inputNumber);
                 }
                 else
                 {

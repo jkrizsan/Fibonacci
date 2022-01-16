@@ -6,7 +6,7 @@
     public class FibonacciResponse
     {
         /// <summary>
-        /// Value of Fibonacci response
+        /// Value of the Fibonacci response
         /// </summary>
         public int Fibonacci { get; set; }
 

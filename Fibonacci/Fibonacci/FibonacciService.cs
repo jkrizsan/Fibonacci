@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace Fibonacci
 {
     /// <summary>
-    /// Fibonacci Service class
+    /// Class of the Fibonacci Service
     /// </summary>
     public class FibonacciService : IFibonacciService
     {
@@ -21,12 +21,12 @@ namespace Fibonacci
         {
             FibonacciResponse response = new FibonacciResponse();
 
-            var taskDelay = Task.Factory.StartNew(() => Task.Delay(_rnd.Next(0, maxDelay)));
-            var taskFibo = Task.Factory.StartNew(() => getFibbo(number));
+            Task taskDelay = Task.Factory.StartNew(() => Task.Delay(_rnd.Next(0, maxDelay)));
+            Task<int> taskFibo = Task.Factory.StartNew(() => getFibbo(number));
 
             var tasks = new List<Task>() { taskDelay, taskFibo };
 
-            var firstDone = Task.WhenAny(tasks).Result;
+            Task firstDone = Task.WhenAny(tasks).Result;
 
             Task.WaitAll(tasks.ToArray());
             
