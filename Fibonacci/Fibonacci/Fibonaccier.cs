@@ -24,7 +24,14 @@ namespace Fibonacci
 
                 if (Int32.TryParse(inputStr, out inputNumber))
                 {
-                    callLogic(inputNumber);
+                    if (inputNumber > 0)
+                    {
+                        callLogic(inputNumber);
+                    }
+                    else
+                    {
+                        writeToConsole("The input number must be positive");
+                    }
                 }
                 else
                 {
