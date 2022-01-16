@@ -50,3 +50,7 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+/.vs
+/Fibonacci/.vs/Fibonacci/v17
+/Fibonacci/Fibonacci/obj
+/Fibonacci/Fibonacci/bin/Debug/netcoreapp3.1
